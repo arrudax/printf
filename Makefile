@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maanton2 <maanton2@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: maanton2 <maanton2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 05:19:48 by maanton2          #+#    #+#              #
-#    Updated: 2024/11/10 08:44:04 by maanton2         ###   ########.org.br    #
+#    Updated: 2024/11/11 15:41:18 by maanton2         ###   ########.org.br    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 #                                   PATH                                       #
 # **************************************************************************** #
 
-SRCS_LIBFT			:= libft
-SRCS_LIBFT_FILE		:= libft/libft.a
+SRCS_LIBFT			:= libft/
+SRCS_LIBFT_FILE		:= $(SRCS_LIBFT)libft.a
 SRCS_PRINTF			:= src/printf/
 INCS				:= includes/
 BUILD_DIR			:= build/
@@ -26,7 +26,7 @@ BUILD_DIR			:= build/
 
 RM					:= rm -rf
 MKDIR				:= mkdir -p
-MAKE				:= make
+MAKE				:= make --no-print-directory
 C					:= -C
 L-CLEAN				:= $(MAKE) clean $(C)
 L-FCLEAN			:= $(MAKE) fclean $(C)
@@ -48,12 +48,12 @@ OBJECT_FILES		:= $(SOURCE_FILES:%.c=$(BUILD_DIR)%.o)
 #                               COMPILATION                                    #
 #******************************************************************************#
 
-CC                 := cc
-CFLAGS             := -Wall -Werror -Wextra
-CPPFLAGS           := $(addprefix -I, $(INCS))
-AR                 := ar -rcs
-COMP_OBJS          = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_LIB           = $(AR) $(NAME) $(OBJECT_FILES) $(SRCS_LIBFT_FILE)
+CC					:= cc
+CFLAGS				:= -Wall -Werror -Wextra
+CPPFLAGS			:= $(addprefix -I , $(INCS))
+AR					:= ar -rcs
+COMP_OBJS			:= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_LIB			:= $(AR) $(NAME) $(OBJECT_FILES)
 
 #******************************************************************************#
 #                                  FUNCTION                                    #
@@ -95,7 +95,7 @@ endef
 #                                   RULES                                      #
 #******************************************************************************#
 
-all: $(NAME) 
+all: $(SRCS_LIBFT_FILE) $(NAME)
 
 $(SRCS_LIBFT_FILE):
 	$(call comp_libft)
