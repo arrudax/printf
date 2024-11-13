@@ -6,18 +6,29 @@
 /*   By: maanton2 <maanton2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 06:09:14 by maanton2          #+#    #+#             */
-/*   Updated: 2024/11/10 08:30:30 by maanton2         ###   ########.org.br   */
+/*   Updated: 2024/11/13 07:12:15 by maanton2         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../../includes/ft_printf.h"
-
-int ft_printf(const char *s, ...)
+ 
+#include "ft_printf.h"
+ 
+int ft_printf(const char *format, ...)
 {
 	va_list	args;
-	va_start(args, s);
+	int		printed;
+	char	*p_format;
 
-	printf("HELLLLO");
+	p_format = (char *)format;
+	va_start(args, format);
+	while (*p_format)
+	{
+		if (*p_format == '%')
+		{
+			p_format++;
+			printed = ft_vsprintf(p_format, args);
+		}
+		p_format++;
+	}
 	va_end(args);
-	return (1);
+	return (printed);
 }
