@@ -8,3 +8,4 @@ run_test
 *.txt
 build/
 .nfs*
+libft/
