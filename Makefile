@@ -6,10 +6,10 @@
 #    By: maanton2 <maanton2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 05:19:48 by maanton2          #+#    #+#              #
-#    Updated: 2024/11/13 07:36:00 by maanton2         ###   ########.org.br    #
+#    Updated: 2024/11/14 05:54:26 by maanton2         ###   ########.org.br    #
 #                                                                              #
 # **************************************************************************** #
- 
+
 LIBFT_VERSION		:= 2.2.0
  
 # **************************************************************************** #
@@ -18,9 +18,13 @@ LIBFT_VERSION		:= 2.2.0
  
 SRCS_LIBFT			:= libft/
 SRCS_LIBFT_FILE		:= $(SRCS_LIBFT)libft.a
-SRCS_PRINTF			:= src/printf/
-SRCS_FORMAT			:= src/format/
-SRCS_HANDLER		:= src/handler/
+SRCS_PRINTF			:= src/bonus/printf/
+SRCS_FORMAT			:= src/bonus/format/
+SRCS_SPACES			:= $(SRCS_FORMAT)spaces/
+SRCS_ZEROS			:= $(SRCS_FORMAT)zeros/
+SRCS_PARSE			:= $(SRCS_FORMAT)parse/
+SRCS_CMP			:= src/bonus/cmp/
+SRCS_HANDLER		:= src/bonus/handler/
 INCS				:= includes/ libft/includes
 BUILD_DIR			:= build/
  
@@ -36,17 +40,28 @@ MKDIR				:= mkdir -p
 # **************************************************************************** #
  
 NAME				:= libftprintf.a
- 
-SOURCE_FILES		+=$(addprefix $(SRCS_PRINTF), ft_printf.c)
 
-SOURCE_FILES		+=$(addprefix $(SRCS_HANDLER), ft_handler_case.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_FORMAT), ft_format_string_bonus.c\
+	ft_vsprintf_bonus.c)
 
-SOURCE_FILES		+=$(addprefix $(SRCS_FORMAT), ft_vsprintf.c \
-	ft_parse_precision_and_width.c \
-	ft_format_string.c)
-#	ft_toupper.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_ZEROS), ft_format_zero_in_str_bonus.c \
+	ft_format_zero_pad_bonus.c)
+
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_SPACES), ft_format_space_in_str_bonus.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PARSE), ft_parse_precision_and_width_bonus.c)
+
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_CMP), ft_cmp_and_join_str_space_bonus.c \
+	ft_cmp_and_join_str_zero_bonus.c)
+
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_HANDLER), ft_handler_case_bonus.c)
+
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PRINTF), ft_printf_bonus.c)
+
+SOURCE_FILES		+=$(addprefix $(SRCS_FORMAT), ft_vsprintf.c)
  
 OBJECT_FILES		:= $(SOURCE_FILES:%.c=$(BUILD_DIR)%.o)
+
+OBJECT_FILES_BONUS	:= $(SOURCE_FILES_BONUS:%.c=$(BUILD_DIR)%.o)
  
 #******************************************************************************#
 #                               COMPILATION                                    #
@@ -89,7 +104,7 @@ define comp_lib
 endef
  
 define clean
-	$(RM) $(OBJECT_FILES)
+	$(RM) $(OBJECT_FILES) $(OBJECT_FILES_BONUS)
 endef
  
 define fclean
@@ -114,6 +129,10 @@ $(NAME): $(SRCS_LIBFT_FILE) | $(OBJECT_FILES)
 $(SRCS_LIBFT_FILE):
 	$(call submodule_update_libft)
  
+bonus: $(SRCS_LIBFT_FILE) | $(OBJECT_FILES_BONUS)
+	$(AR) $(NAME) $(OBJECT_FILES_BONUS)
+	@echo "Compilação concluída: $(NAME)"
+
 clean:
 	$(call clean)
  

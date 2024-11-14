@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_string.c                                 :+:      :+:    :+:   */
+/*   ft_handler_case_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maanton2 <maanton2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 07:32:06 by maanton2          #+#    #+#             */
-/*   Updated: 2024/11/13 07:57:59 by maanton2         ###   ########.org.br   */
+/*   Created: 2024/11/13 05:27:02 by maanton2          #+#    #+#             */
+/*   Updated: 2024/11/14 06:33:14 by maanton2         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int		ft_format_string(char *formated_str, int precision, int field_width)
+char	*ft_handler_case(int c, va_list args)
 {
-	if (precision > 0 && field_width > 0)
+	char	*s;
+
+	s = NULL;
+	if (c == 'd')
 	{
-		printf("%s\n", formated_str);
-		printf("%d\n", precision);
-		printf("%d\n", field_width);
+		s = ft_itoa(va_arg(args, int));
+		if (!s)
+		{
+			return (NULL);
+		}
 	}
-	return (1);
+	return (s);
 }
