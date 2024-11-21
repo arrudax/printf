@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_zero_in_str.c                            :+:      :+:    :+:   */
+/*   ft_format_zero_in_str_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maanton2 <maanton2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 22:24:02 by maanton2          #+#    #+#             */
-/*   Updated: 2024/11/13 22:24:21 by maanton2         ###   ########.org.br   */
+/*   Updated: 2024/11/21 16:03:55 by maanton2         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_format_zero_in_str(const char *fmt, int precision, int field_width)
 	int		zeros;
 
 	 len_s = (int)ft_strlen(fmt);
-	if (len_s > precision && len_s > field_width)
+	if (len_s > precision || len_s > field_width)
 		return ((char *)fmt);
 	i = 0;
 	zeros = precision - len_s;

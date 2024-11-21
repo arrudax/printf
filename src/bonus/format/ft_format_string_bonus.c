@@ -6,7 +6,7 @@
 /*   By: maanton2 <maanton2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 07:32:06 by maanton2          #+#    #+#             */
-/*   Updated: 2024/11/20 01:10:46 by maanton2         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:58:09 by maanton2         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ char	*ft_format_string(char *raw_str, int precision, int field_width, char *flag
 	fmt_zero = "";
 	fmt_space = "";
 	is_negative = ft_strchr(raw_str, '-');
+	if (field_width < 0)
+	{
+		fmt_zero = ft_format_zero_in_str((const char *)raw_str, precision, field_width);
+		if (!fmt_zero)
+			return (NULL);
+		formated = ft_cmp_and_join_str_zero(raw_str, fmt_zero, precision);
+	}
 	if (precision > 0 && field_width > 0)
 	{
 		fmt_zero = ft_format_zero_in_str((const char *)raw_str, precision, field_width);
@@ -63,7 +70,6 @@ char	*ft_format_string(char *raw_str, int precision, int field_width, char *flag
 			return (NULL);
 		if (ft_strlen(fmt_zero) > 2)
 			fmt_zero[0] = '-';
-		// printf("%d\n", field_width);
 		formated = ft_cmp_and_join_str_zero(is_negative + 1, fmt_zero, field_width);
 		fmt_space = ft_format_space_in_str((const char *)formated, field_width);
 		if (!fmt_space)

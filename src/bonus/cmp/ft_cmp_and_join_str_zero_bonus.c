@@ -6,7 +6,7 @@
 /*   By: maanton2 <maanton2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 02:38:36 by maanton2          #+#    #+#             */
-/*   Updated: 2024/11/14 02:54:51 by maanton2         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:10:41 by maanton2         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ char	*ft_cmp_and_join_str_zero(char *raw_str, char *fmt_zero, int precision)
 			return (NULL);
 		free(temp);
 	}
+	else
+		return (raw_str);
 	return (join);
 }
