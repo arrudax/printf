@@ -18,13 +18,14 @@ LIBFT_VERSION		:= 2.2.0
  
 SRCS_LIBFT			:= libft/
 SRCS_LIBFT_FILE		:= $(SRCS_LIBFT)libft.a
-SRCS_PRINTF			:= src/bonus/printf/
-SRCS_FORMAT			:= src/bonus/format/
-SRCS_SPACES			:= $(SRCS_FORMAT)spaces/
-SRCS_ZEROS			:= $(SRCS_FORMAT)zeros/
-SRCS_PARSE			:= $(SRCS_FORMAT)parse/
-SRCS_CMP			:= src/bonus/cmp/
-SRCS_HANDLER		:= src/bonus/handler/
+SRCS_MANDATORY		:= src/mandatory/
+SRCS_PRINTF_BONUS	:= src/bonus/printf/
+SRCS_FORMAT_BONUS	:= src/bonus/format/
+SRCS_SPACES_BONUS	:= $(SRCS_FORMAT_BONUS)spaces/
+SRCS_ZEROS_BONUS	:= $(SRCS_FORMAT_BONUS)zeros/
+SRCS_PARSE_BONUS	:= $(SRCS_FORMAT_BONUS)parse/
+SRCS_CMP_BONUS		:= src/bonus/cmp/
+SRCS_HANLER_BONUS	:= src/bonus/handler/
 INCS				:= includes/ libft/includes
 BUILD_DIR			:= build/
  
@@ -41,23 +42,23 @@ MKDIR				:= mkdir -p
  
 NAME				:= libftprintf.a
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_FORMAT), ft_format_string_bonus.c\
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_FORMAT_BONUS), ft_format_string_bonus.c\
 	ft_vsprintf_bonus.c)
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_ZEROS), ft_format_zero_in_str_bonus.c \
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_ZEROS_BONUS), ft_format_zero_in_str_bonus.c \
 	ft_format_zero_pad_bonus.c)
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_SPACES), ft_format_space_in_str_bonus.c)
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PARSE), ft_parse_precision_and_width_bonus.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_SPACES_BONUS), ft_format_space_in_str_bonus.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PARSE_BONUS), ft_parse_precision_and_width_bonus.c)
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_CMP), ft_cmp_and_join_str_space_bonus.c \
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_CMP_BONUS), ft_cmp_and_join_str_space_bonus.c \
 	ft_cmp_and_join_str_zero_bonus.c)
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_HANDLER), ft_handler_case_bonus.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_HANLER_BONUS), ft_handler_case_bonus.c)
 
-SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PRINTF), ft_printf_bonus.c)
+SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PRINTF_BONUS), ft_printf_bonus.c)
 
-SOURCE_FILES		+=$(addprefix $(SRCS_FORMAT), ft_vsprintf.c)
+SOURCE_FILES		+=$(addprefix $(SRCS_MANDATORY), ft_vsprintf.c ft_printf.c)
  
 OBJECT_FILES		:= $(SOURCE_FILES:%.c=$(BUILD_DIR)%.o)
 

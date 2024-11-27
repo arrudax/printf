@@ -22,12 +22,12 @@
 
 // printf
 int		ft_printf(const char *format, ...);
+int		ft_vsprintf(char c, va_list args);
 
 // handler
 char	*ft_handler_case(int c, va_list args);
 
 // format
-int		ft_vsprintf(char **fmt, va_list args);
 char	*ft_parse_precision_and_width(char *fmt, int *precision, int *field_width);
 char	*ft_format_string(char *raw_str, int precision, int field_width, char *flag);
 char	*ft_format_zero_in_str(const char *fmt, int precision, int field_width);
