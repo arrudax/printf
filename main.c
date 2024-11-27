@@ -24,15 +24,17 @@ int main(int argc, char **argv)
 {
 	int	expected;
 	int	result;
+	//void *p;
 
+	//p = &result;
 	expected = -1;
 	result = -1;
 	if (argc >= 2)
 		ft_printf(argv[1]);
 
-	result = ft_printf("FT: %6.4d \n", 42);
-	expected = printf("OG: %6.4d \n", -42);
-	printf("result: %d -  expected: %d",result, expected);
+	result = ft_printf("FT: %X \n", 10101010);
+	expected = printf("OG: %X \n", 10101010);
+	printf("result: %d -expected: %d",result, expected);
 // Teste básico de strings e caracteres// 
 /*
     ft_printf("Testando uma string: %s\n", "Hello, World!");

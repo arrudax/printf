@@ -23,8 +23,9 @@
 // printf
 int		ft_printf(const char *format, ...);
 int		ft_vsprintf(char c, va_list args);
-
-// handler
+char	*ft_long_to_hex(unsigned long ptr, int *f_malloc);
+char	*ft_int_to_hex(unsigned int ptr, int *f_malloc, int flag_parse);
+	// handler
 char	*ft_handler_case(int c, va_list args);
 
 // format

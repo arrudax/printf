@@ -23,13 +23,29 @@ static void ft_rev_tab(char *tab, size_t size)
     tab[size] = '\0';
 }
 
-char *ft_long_to_hex(unsigned long ptr, int *f_malloc)
+static void ft_parse_hex(char *hex, size_t *i, int flag_parse)
+{
+    size_t c;
+
+	c = 0;
+    if (flag_parse == 1)
+    {
+        while (c < *i)
+        {
+            hex[c] = ft_toupper(hex[c]);
+            c++;
+        }
+    }
+}
+
+char *ft_int_to_hex(unsigned int ptr, int *f_malloc, int flag_parse)
 {
 	size_t	i;
 	char	*hex;
 	int		remainder;
 
 	i = 0;
+	*f_malloc = 1;
 	if (ptr == 0)
 		return (ft_strdup("(nil)"));
     hex = (char *)malloc(20 * sizeof(char));
@@ -45,9 +61,7 @@ char *ft_long_to_hex(unsigned long ptr, int *f_malloc)
 		ptr /= 16;
 		i++;
 	}
-	*f_malloc = 1;
-	hex[i++] = 'x';
-	hex[i++] = '0';
+	ft_parse_hex(hex, &i, flag_parse);
 	ft_rev_tab(hex, i);
 	return hex;
 }

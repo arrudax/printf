@@ -58,7 +58,7 @@ SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_HANLER_BONUS), ft_handler_case_bonus.c)
 
 SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PRINTF_BONUS), ft_printf_bonus.c)
 
-SOURCE_FILES		+=$(addprefix $(SRCS_MANDATORY), ft_vsprintf.c ft_printf.c)
+SOURCE_FILES		+=$(addprefix $(SRCS_MANDATORY), ft_vsprintf.c ft_printf.c ft_long_to_hex.c ft_int_to_hex.c)
  
 OBJECT_FILES		:= $(SOURCE_FILES:%.c=$(BUILD_DIR)%.o)
 
