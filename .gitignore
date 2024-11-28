@@ -9,3 +9,4 @@ run_test
 build/
 .nfs*
 libft/
+warning_printf_tester/
