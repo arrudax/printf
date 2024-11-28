@@ -6,7 +6,7 @@
 #    By: maanton2 <maanton2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 05:19:48 by maanton2          #+#    #+#              #
-#    Updated: 2024/11/14 05:54:26 by maanton2         ###   ########.org.br    #
+#    Updated: 2024/11/27 21:01:41 by maanton2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,11 @@ SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_HANLER_BONUS), ft_handler_case_bonus.c)
 
 SOURCE_FILES_BONUS	+=$(addprefix $(SRCS_PRINTF_BONUS), ft_printf_bonus.c)
 
-SOURCE_FILES		+=$(addprefix $(SRCS_MANDATORY), ft_vsprintf.c ft_printf.c ft_long_to_hex.c ft_int_to_hex.c)
+SOURCE_FILES		+=$(addprefix $(SRCS_MANDATORY), ft_vsprintf.c \
+	ft_printf.c \
+	ft_long_to_hex.c \
+	ft_long_itoa.c \
+	ft_int_to_hex.c)
  
 OBJECT_FILES		:= $(SOURCE_FILES:%.c=$(BUILD_DIR)%.o)
 
@@ -130,9 +134,9 @@ $(NAME): $(SRCS_LIBFT_FILE) | $(OBJECT_FILES)
 $(SRCS_LIBFT_FILE):
 	$(call submodule_update_libft)
  
-bonus: $(SRCS_LIBFT_FILE) | $(OBJECT_FILES_BONUS)
-	$(AR) $(NAME) $(OBJECT_FILES_BONUS)
-	@echo "Compilação concluída: $(NAME)"
+# bonus: $(SRCS_LIBFT_FILE) | $(OBJECT_FILES_BONUS)
+# 	$(AR) $(NAME) $(OBJECT_FILES_BONUS)
+# 	@echo "Compilação concluída: $(NAME)"
 
 clean:
 	$(call clean)
